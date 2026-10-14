@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffe7f0">
+<title>For My Floryn 💗</title>
+<style>
+:root{--pink:#ff6f9f;--deep:#a92f62;--rose:#ffe1ec;--cream:#fff9f6;--ink:#54263b;--gold:#f4c76b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:ui-rounded,"Trebuchet MS",system-ui,sans-serif;color:var(--ink);background:#ffeaf1;min-height:100vh}
+button,input{font:inherit}
+button{cursor:pointer}
+.page{min-height:100svh;display:none;position:relative;overflow:hidden;padding:28px 16px 42px;background:radial-gradient(circle at 15% 15%,#fff9f5 0 8%,transparent 28%),radial-gradient(circle at 90% 80%,#ffd2e3 0 8%,transparent 30%),linear-gradient(145deg,#fff3f7,#ffdbe8 55%,#fff0e6)}
+.page.active{display:flex;flex-direction:column;align-items:center;justify-content:center}
+.sparkle{position:fixed;pointer-events:none;z-index:0;opacity:.72;animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-7deg)}50%{transform:translateY(-18px) rotate(8deg)}}
+.content{width:min(100%,720px);position:relative;z-index:1;text-align:center}
+.eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:.72rem;font-weight:800;color:#bc5680}
+h1{font-size:clamp(2.1rem,8vw,4.5rem);line-height:1.02;margin:10px 0;color:var(--deep);letter-spacing:-.045em}
+h2{font-size:clamp(1.65rem,5vw,2.5rem);margin:8px 0 12px;color:var(--deep)}
+p{line-height:1.75}
+.sub{font-size:1.03rem;max-width:540px;margin:0 auto 22px}
+.primary,.secondary{border:0;border-radius:999px;padding:13px 22px;font-weight:800;box-shadow:0 8px 18px #bd467326;transition:transform .2s}
+.primary{background:linear-gradient(135deg,#ff6f9f,#e84683);color:white}
+.secondary{background:#fff8fb;color:var(--deep);border:1px solid #ffc3d8}
+.primary:active,.secondary:active,.gift:active{transform:scale(.97)}
+.plane-wrap{height:125px;position:relative;margin:8px auto 0}
+.plane{font-size:4.8rem;display:inline-block;filter:drop-shadow(0 10px 8px #c44b7c2b);animation:fly 3s ease-in-out infinite}
+@keyframes fly{0%,100%{transform:translate(-8px,7px) rotate(-12deg)}50%{transform:translate(10px,-8px) rotate(-2deg)}}
+.trail{position:absolute;left:12%;right:12%;top:72px;border-top:2px dashed #f5a8c5;transform:rotate(-5deg)}
+.envelope-area{width:min(100%,410px);margin:16px auto 12px;touch-action:pan-y;user-select:none}
+.envelope{height:225px;position:relative;background:#fffafd;border-radius:12px 12px 18px 18px;box-shadow:0 18px 40px #a72b5d24;overflow:hidden;border:1px solid #ffd0e0}
+.envelope:before{content:"";position:absolute;inset:0;background:linear-gradient(140deg,transparent 49.5%,#ffd6e5 50%),linear-gradient(220deg,transparent 49.5%,#ffe3ec 50%);clip-path:polygon(0 0,100% 0,50% 63%);z-index:3}
+.envelope:after{content:"";position:absolute;bottom:0;left:0;width:0;height:0;border-left:50% solid transparent;border-right:50% solid transparent;border-bottom:150px solid #fff0f5;z-index:2}
+.letter-peek{position:absolute;left:8%;right:8%;top:12px;height:190px;background:#fffdf9;border:1px solid #f8d4df;border-radius:7px;padding:18px;color:#b14c75;z-index:1;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.seal{position:absolute;z-index:4;left:50%;top:53%;transform:translate(-50%,-50%);background:#f46e9c;color:white;border-radius:50%;width:55px;height:55px;display:grid;place-items:center;font-size:1.5rem;box-shadow:0 5px 12px #b832632e}
+.envelope.open .letter-peek{transform:translateY(-175px) rotate(-2deg)}
+.envelope.open:before{transform:translateY(30px)}
+.swipe-note{font-size:.9rem;color:#a54a72;margin:8px 0 20px}
+.letter-card{display:none;text-align:left;background:#fffdf9;border:1px solid #f7cada;border-radius:18px;padding:clamp(20px,5vw,36px);box-shadow:0 18px 48px #a72b5d20;margin:20px auto;max-height:60svh;overflow:auto}
+.letter-card.show{display:block;animation:rise .65s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.letter-card p{margin:0 0 14px;white-space:normal}
+.letter-sign{font-weight:800;color:#c33d78;font-size:1.1rem}
+.gift-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin:24px auto;max-width:620px}
+.gift{border:1px solid #ffc3d8;border-radius:20px;background:#fffafc;padding:16px 10px 14px;min-height:145px;color:var(--ink);box-shadow:0 10px 22px #bd467315;transition:.2s;position:relative}
+.gift .emoji{display:block;font-size:2.6rem;margin-bottom:8px;filter:drop-shadow(0 5px 4px #c44b7c1b)}
+.gift strong{display:block;color:#a92f62}
+.gift small{display:block;margin-top:5px;color:#a86683}
+.gift.selected{border:2px solid #e84683;background:#fff0f6;box-shadow:0 0 0 4px #ff9fbd30}
+.gift.selected:after{content:"✓";position:absolute;right:10px;top:9px;background:#e84683;color:white;border-radius:50%;width:23px;height:23px;display:grid;place-items:center;font-weight:900}
+.counter{font-weight:800;color:#a92f62;background:#fff7fa;border:1px solid #ffc9db;border-radius:999px;padding:9px 15px;display:inline-block}
+.notice{font-size:.9rem;min-height:1.4em;color:#a92f62}
+.modal{position:fixed;inset:0;z-index:10;background:#64213db3;display:none;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(5px)}
+.modal.show{display:flex}
+.dialog{background:#fff9fc;border-radius:25px;padding:25px;width:min(100%,410px);box-shadow:0 25px 80px #4a0b2a55;text-align:center;animation:rise .25s ease}
+.dialog .big{font-size:3.2rem}
+.dialog input{width:100%;border:1px solid #f0b3cb;border-radius:12px;padding:13px 14px;margin:10px 0 12px;background:white;color:var(--ink);outline-color:#f46e9c}
+.dialog input:focus{outline:2px solid #f46e9c}
+.error{color:#b3235a;min-height:1.4em;font-size:.9rem}
+.reveal{font-size:1.08rem;line-height:1.8;background:#fff0f6;border-radius:17px;padding:18px;margin:14px 0}
+.final-heart{font-size:5rem;animation:beat 1s infinite}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+footer{margin-top:25px;font-size:.78rem;color:#a86683}
+@media(min-width:560px){.gift-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.gift{min-height:165px}.page{padding:40px 24px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="sparkle" style="top:9%;left:7%;font-size:1.5rem">♡</div><div class="sparkle" style="top:18%;right:9%;font-size:1.2rem;animation-delay:-2s">✦</div><div class="sparkle" style="bottom:13%;left:12%;font-size:1.7rem;animation-delay:-3s">♡</div><div class="sparkle" style="bottom:20%;right:8%;font-size:1.3rem;animation-delay:-1s">✧</div>
+<section class="page active" id="welcome">
+ <main class="content">
+  <div class="eyebrow">a little surprise, made with love</div>
+  <div class="plane-wrap"><div class="trail"></div><div class="plane" aria-hidden="true">🛩️</div></div>
+  <h1>Happy Birthday,<br>my Floryn 💗</h1>
+  <p class="sub">Babeeee, a tiny paper plane has travelled all this way just to bring you something from my heart. Are you ready, my love? 🥹💕</p>
+  <button class="primary" onclick="go('letter')">Open your surprise 💌</button>
+  <footer>made especially for you, with all my love ♡</footer>
+ </main>
+</section>
+<section class="page" id="letter">
+ <main class="content">
+  <div class="eyebrow">delivered with love 💌</div>
+  <h2>A letter just for you</h2>
+  <div class="plane" style="font-size:3rem">💌</div>
+  <p class="sub">Swipe across the envelope to open it, or tap it gently. There's a little piece of my heart inside. ❤️</p>
+  <div class="envelope-area" id="swipeArea" aria-label="Swipe the envelope to open the letter">
+   <div class="envelope" id="envelope">
+    <div class="letter-peek">For my favourite person…<br><br><span style="font-size:2rem">💕</span><br>open me</div>
+    <div class="seal">♥</div>
+   </div>
+  </div>
+  <div class="swipe-note" id="swipeNote">← swipe the envelope →</div>
+  <article class="letter-card" id="letterCard">
+   <p><strong>Babeeee itss yourr birthday yaaaaaa❤️🪅🥳</strong></p>
+   <p>Happy birthday myy babee Floryn 💕 the only one who is my safe place, my comfort, my love, my everything ❤️</p>
+   <p>I hope this new day brings more happiness than before💓 i always wish the best for you babe🫂 Not only today everyday is a special day with you in it💞</p>
+   <p>I wish every dream you dreamed of comes true.😙 I might not be able to give you gifts presents but my love care time and affection is always be with you 😚 babe keep growing keep moving forward you don't have to look back I will take care of you in every steps of your life❤️ I will be with you in every ups and down🫂</p>
+   <p>I want to be the person whom you are comfortable to share everything about your problems your day your excitement everything💕</p>
+   <p>Wishing you the best babeee 😚<br>Take care of yourself 💕<br>Always stay safe❤️</p>
+   <p>This boy will always love you and always support you babe never think you are alone i am always here❤️🫂</p>
+   <p>Happy birthday my love❤️<br>I love you so much till eternity ❣️<br>Muahaaa 💋</p>
+   <p class="letter-sign">Forever yours, with all my love ❤️</p>
+  </article>
+  <button class="primary" id="toGifts" style="display:none" onclick="go('gifts')">Now find your gifts, babeee 🎁</button>
+ </main>
+</section>
+<section class="page" id="gifts">
+ <main class="content">
+  <div class="eyebrow">your birthday treasure room ✨</div>
+  <h2>Choose any 3 gifts, babeee 🎁</h2>
+  <p class="sub">Every box has a little surprise from me. Pick the three you want most. To open each one, answer our secret question first. 😽</p>
+  <div class="counter" id="counter">0 of 3 gifts chosen 💗</div>
+  <div class="gift-grid" id="giftGrid">
+   <button class="gift" data-id="kisses" data-emoji="💋" data-title="A million kisses"><span class="emoji">💋</span><strong>Kiss box</strong><small>open for smooches</small></button>
+   <button class="gift" data-id="hugs" data-emoji="🫂" data-title="Unlimited hugs"><span class="emoji">🧸</span><strong>Hug box</strong><small>your warmest cuddles</small></button>
+   <button class="gift" data-id="love" data-emoji="❤️" data-title="I love you, always"><span class="emoji">❤️</span><strong>Love box</strong><small>three little words</small></button>
+   <button class="gift" data-id="date" data-emoji="🌙" data-title="Our dream date"><span class="emoji">🌙</span><strong>Date-night box</strong><small>a date made for us</small></button>
+   <button class="gift" data-id="promise" data-emoji="🤞" data-title="A promise from me"><span class="emoji">🤞</span><strong>Promise box</strong><small>something from my heart</small></button>
+   <button class="gift" data-id="comfort" data-emoji="🐻" data-title="Your comfort person"><span class="emoji">🐻</span><strong>Comfort box</strong><small>I'm here for you</small></button>
+   <button class="gift" data-id="princess" data-emoji="👑" data-title="Princess treatment"><span class="emoji">👑</span><strong>Princess box</strong><small>because that's you</small></button>
+   <button class="gift" data-id="forever" data-emoji="♾️" data-title="My forever person"><span class="emoji">♾️</span><strong>Forever box</strong><small>one more reason to smile</small></button>
+   <button class="gift" data-id="bonus" data-emoji="🎀" data-title="A bonus surprise"><span class="emoji">🎀</span><strong>Mystery box</strong><small>one more tiny surprise</small></button>
+  </div>
+  <p class="notice" id="giftNotice" aria-live="polite">Pick your favourite three 💞</p>
+  <button class="primary" id="openChosen" disabled onclick="startChosen()">Open my chosen gifts 🔐</button>
+  <footer>hint: your answer is the boy who loves you most 😽</footer>
+ </main>
+</section>
+<section class="page" id="final">
+ <main class="content">
+  <div class="eyebrow">one last thing, my love</div>
+  <div class="final-heart">💗</div>
+  <h1>Happy birthday,<br>my Floryn!</h1>
+  <p class="sub">No matter how many gifts you choose, my favourite gift will always be getting to love you. I hope your day is as beautiful as your heart. 🫂❤️</p>
+  <p style="font-size:1.25rem;font-weight:800;color:#a92f62">I love you till eternity. Muahaaa 💋</p>
+  <button class="secondary" onclick="go('gifts')">Look at my gifts again 🎁</button>
+ </main>
+</section>
+<div class="modal" id="passwordModal" role="dialog" aria-modal="true" aria-labelledby="passwordTitle">
+ <div class="dialog" id="passwordDialog">
+  <div class="big">🔐💗</div><h2 id="passwordTitle">A secret question!</h2>
+  <p>Who is the love of your life? 😽</p>
+  <form id="passwordForm">
+   <input id="passwordInput" autocomplete="off" placeholder="Type your answer, babeee…" aria-label="Secret answer" required>
+   <button class="primary" type="submit" style="width:100%">Unlock my gift 💝</button>
+  </form>
+  <div class="error" id="passwordError" aria-live="polite"></div>
+  <button class="secondary" onclick="closeModal()" style="margin-top:8px">Not yet 💕</button>
+ </div>
+</div>
+<div class="modal" id="revealModal" role="dialog" aria-modal="true" aria-labelledby="revealTitle">
+ <div class="dialog">
+  <div class="big" id="revealEmoji">💋</div><h2 id="revealTitle">Your surprise!</h2>
+  <div class="reveal" id="revealText"></div>
+  <button class="primary" onclick="closeReveal()">Awww, next! 💗</button>
+ </div>
+</div>
+<script>
+const pages=[...document.querySelectorAll('.page')];
+function go(id){pages.forEach(p=>p.classList.toggle('active',p.id===id));window.scrollTo({top:0,behavior:'smooth'});}
+const envelope=document.getElementById('envelope');
+const letterCard=document.getElementById('letterCard');
+let openedLetter=false,startX=0;
+function openLetter(){
+ if(openedLetter)return;openedLetter=true;envelope.classList.add('open');
+ document.getElementById('swipeNote').textContent='Your letter is opening… 💗';
+ setTimeout(()=>{letterCard.classList.add('show');document.getElementById('toGifts').style.display='inline-block';document.getElementById('swipeNote').textContent='A letter from my heart, just for you ❤️';},650);
+}
+document.getElementById('swipeArea').addEventListener('click',openLetter);
+document.getElementById('swipeArea').addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX},{passive:true});
+document.getElementById('swipeArea').addEventListener('touchend',e=>{if(Math.abs(e.changedTouches[0].clientX-startX)>35)openLetter()},{passive:true});
+document.getElementById('swipeArea').addEventListener('pointerdown',e=>{startX=e.clientX});
+document.getElementById('swipeArea').addEventListener('pointerup',e=>{if(Math.abs(e.clientX-startX)>35)openLetter()});
+const selected=new Set(),giftButtons=[...document.querySelectorAll('.gift')];
+const counter=document.getElementById('counter'),openChosen=document.getElementById('openChosen'),giftNotice=document.getElementById('giftNotice');
+giftButtons.forEach(btn=>btn.addEventListener('click',()=>{
+ const id=btn.dataset.id;
+ if(selected.has(id)){selected.delete(id);btn.classList.remove('selected');}
+ else if(selected.size<3){selected.add(id);btn.classList.add('selected');}
+ else{giftNotice.textContent='Only three gifts, babeee! Unselect one first 💗';return;}
+ counter.textContent=`${selected.size} of 3 gifts chosen 💗`;
+ openChosen.disabled=selected.size!==3;
+ giftNotice.textContent=selected.size===3?'Perfect! Your three gifts are ready to unlock 🔐':'Choose '+(3-selected.size)+' more '+(3-selected.size===1?'gift':'gifts')+' 💞';
+}));
+let queue=[],current=null,openedGifts=new Set();
+function startChosen(){if(selected.size!==3)return;queue=[...selected].filter(id=>!openedGifts.has(id));if(queue.length===0){giftNotice.textContent='You opened all three chosen gifts! You can pick different ones too 💗';return;}askPassword();}
+function askPassword(){current=queue[0];document.getElementById('passwordInput').value='';document.getElementById('passwordError').textContent='';document.getElementById('passwordModal').classList.add('show');setTimeout(()=>document.getElementById('passwordInput').focus(),100);}
+document.getElementById('passwordForm').addEventListener('submit',e=>{
+ e.preventDefault();const answer=document.getElementById('passwordInput').value.trim().toLowerCase();
+ if(answer!=='pawan'){document.getElementById('passwordError').textContent='Hehe, try again my love 😽 Hint: Pawan 💗';return;}
+ document.getElementById('passwordModal').classList.remove('show');showGift(current);
+});
+const surprises={
+ kisses:{emoji:'💋',title:'A million kisses!',text:'Muah muah muahhhhh! 💋💋💋 Sending you unlimited forehead kisses, cheek kisses, nose kisses and all the kisses your heart can hold. Imagine me giving you the biggest kiss ever, babeeee 😽❤️'},
+ hugs:{emoji:'🫂',title:'Unlimited hugs!',text:'A giant warm hug, and another, and another. 🫂 Whenever you feel tired, sad, excited or just need someone, imagine my arms around you. You will always have a safe place with me, my love. 💗'},
+ love:{emoji:'❤️',title:'I love you, always',text:'I LOVE YOU SO MUCH, FLORYN. ❤️ On your happiest days, your hardest days and all the ordinary days between them. You mean more to me than words can explain. Till eternity, babeee. ❣️'},
+ date:{emoji:'🌙',title:'Our dream date',text:'One day: a peaceful evening, yummy food, your hand in mine, silly conversations, lots of laughter and a long hug before we say goodbye. No fancy things needed—just you and me. 🌙💞'},
+ promise:{emoji:'🤞',title:'A promise from me',text:'I promise to listen, to support your dreams, to celebrate your wins and to stand beside you when life gets difficult. I will keep learning how to love you better, one day at a time. ❤️🫂'},
+ comfort:{emoji:'🐻',title:'Your comfort person',text:'You never have to pretend to be okay with me. Tell me about your day, your worries, your excitement—everything. I may not fix every problem, but I will listen and remind you that you matter. 🐻💕'},
+ princess:{emoji:'👑',title:'Princess treatment!',text:'Attention please: the birthday princess is officially the cutest girl in the whole universe today and every day. 👑 You deserve kindness, respect, care, soft hugs and all the little things that make you smile. 💗'},
+ forever:{emoji:'♾️',title:'My forever person',text:'If I could make one wish today, it would be for us to keep choosing each other with patience, honesty, laughter and love. One day at a time, making beautiful memories together. ♾️❤️'},
+ bonus:{emoji:'🎀',title:'A tiny bonus surprise',text:'Surpriseeee! 🎀 You get one extra imaginary bouquet, one extra cuddle, a thousand extra kisses and a reminder that this boy is cheering for you. Happy birthday, my babeee! 🪅🥳💋'}
+};
+function showGift(id){const s=surprises[id];openedGifts.add(id);document.getElementById('revealEmoji').textContent=s.emoji;document.getElementById('revealTitle').textContent=s.title;document.getElementById('revealText').textContent=s.text;document.getElementById('revealModal').classList.add('show');}
+function closeModal(){document.getElementById('passwordModal').classList.remove('show');}
+function closeReveal(){
+ document.getElementById('revealModal').classList.remove('show');queue.shift();
+ if(queue.length){askPassword();return;}
+ const allChosenOpened=[...selected].every(id=>openedGifts.has(id));
+ giftNotice.textContent=allChosenOpened?'You opened all three chosen gifts! My love is your biggest present 💗':'One gift opened! Keep going, babeee 💗';
+ if(allChosenOpened){setTimeout(()=>go('final'),350);}
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();document.getElementById('revealModal').classList.remove('show');}});
+</script>
+</body>
+</html>
